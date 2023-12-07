@@ -1,0 +1,15 @@
+[package]
+name = "simple-api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7.1"
+serde = { version = "1.0.193", features = ["derive"] }
+tokio = { version = "1.34.0", features = ["full"] }
+uuid = { version = "1.6.1", features = [
+    "v4",
+    "fast-rng",
+    "macro-diagnostics",
+    "serde",
+] }
