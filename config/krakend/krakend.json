@@ -1,0 +1,71 @@
+{
+  "$schema": "https://www.krakend.io/schema/v2.5/krakend.json",
+  "version": 3,
+  "name": "Krakend/Keycloak API Gateway",
+  "port": 8080,
+  "timeout": "3000ms",
+  "endpoints": [
+    {
+      "@comment": "Api health",
+      "endpoint": "/api/health",
+      "method": "GET",
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "http://auth:8080/realms/seasonist/protocol/openid-connect/certs",
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/healthz",
+          "host": [
+            "http://simple-api:3000",
+            "http://simple-api:3001"
+          ],
+          "method": "GET",
+          "encoding": "json"
+        }
+      ]
+    }
+  ],
+  "sequential_start": true,
+  "async_agent": [],
+  "extra_config": {
+    "telemetry/logging": {
+      "level": "DEBUG",
+      "prefix": "[KRAKEND]",
+      "syslog": false,
+      "stdout": true
+    },
+    "security/cors": {
+      "allow_origins": [
+        "*"
+      ],
+      "allow_methods": [
+        "GET",
+        "HEAD",
+        "POST",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "OPTIONS",
+        "TRACE",
+        "PATCH"
+      ],
+      "allow_headers": [
+        "Origin",
+        "Authorization",
+        "Content-Type"
+      ],
+      "expose_headers": [
+        "Content-Length"
+      ],
+      "max_age": "12h",
+      "allow_credentials": true
+    }
+  },
+  "output_encoding": "json",
+  "debug_endpoint": false
+}

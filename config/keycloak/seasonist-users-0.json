@@ -1,0 +1,27 @@
+{
+  "realm" : "seasonist",
+  "users" : [ {
+    "id" : "ea733036-134e-4a02-a95b-69cf67c64d51",
+    "createdTimestamp" : 1701945887874,
+    "username" : "john.doe",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "John",
+    "lastName" : "Doe",
+    "email" : "john.doe@example.tld",
+    "credentials" : [ {
+      "id" : "b9e6f752-ac8c-4ddc-9f5b-c876feb74362",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1701945898247,
+      "secretData" : "{\"value\":\"3S8jirln1Hfg/v7c1Bh8Kqr11i2lGLLe6QqsgL40GNU=\",\"salt\":\"dKsm5pgRg+0BW7rmSdS2qg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "workers", "default-roles-seasonist" ],
+    "notBefore" : 0,
+    "groups" : [ "/users", "/users/workers" ]
+  } ]
+}
